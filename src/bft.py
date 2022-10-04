@@ -1,8 +1,6 @@
 """A module for breadth-first traversal of trees."""
 
 from collections import deque
-import collections
-import queue
 from typing import Iterable
 from tree import T
 
@@ -12,7 +10,7 @@ from tree import T
 # structure. Python's deques is useful for implementing queues and 
 # stacks.
 
-def bf_order(t: T | None) -> Iterable[int]:
+def bf_order(t: T) -> Iterable[int]:
 
     # Create queue with root node
     queue = deque([t])
@@ -21,16 +19,19 @@ def bf_order(t: T | None) -> Iterable[int]:
     while queue:
         # We pop the queue from the left
         node = queue.popleft()
-        yield node.val
-        # if current node has children to the left, push it into the queue
-        if node.left:
-            queue.append(node.left)
-        # if current node has children to the right, push it into the queue
-        if node.right:
-            queue.append(node.right)
+        if node:
+            yield node.val
+            # if current node has children to the left, push it into the queue
+            if node.left:
+                queue.append(node.left)
+            # if current node has children to the right, push it into the queue
+            if node.right:
+                queue.append(node.right)
+
+    
 
 
 
-
+tree = T(2, T(1, None, None), T(4, T(3, None, None), T(5, None, None)))
 
 

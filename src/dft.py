@@ -5,7 +5,7 @@ from tree import T
 from collections import deque
 
 
-def in_order(t: T | None) -> Iterable[int]:
+def in_order(t: T) -> Iterable[int]:
     # Create empty an stack
     stack = deque()
 
@@ -23,7 +23,6 @@ def in_order(t: T | None) -> Iterable[int]:
             node = stack.pop()
             yield node.val
             node = node.right
-
 
 
 
