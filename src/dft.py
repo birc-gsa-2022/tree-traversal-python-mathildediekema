@@ -2,13 +2,29 @@
 
 from typing import Iterable
 from tree import T
+from collections import deque
 
 
 def in_order(t: T | None) -> Iterable[int]:
-    """In-order traversal of a tree.
+    # Create empty an stack
+    stack = deque()
 
-    >>> tree = T(2, T(1, None, None), T(4, T(3, None, None), T(5, None, None)))
-    >>> list(in_order(tree))
-    [1, 2, 3, 4, 5]
-    """
-    return  # FIXME
+    # set the current node to the root node
+    node = t
+
+    # if the current node is None and the stack is also empty, we are done
+    while stack or node:
+        # if current node exists, push it into stack and move to its left child
+        if node:
+            stack.append(node)
+            node = node.left
+        else:
+            # Otherwise, if the current node is None, pop an element from the child
+            node = stack.pop()
+            yield node.val
+            node = node.right
+
+
+
+
+
