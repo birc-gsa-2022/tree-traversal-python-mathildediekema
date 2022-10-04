@@ -15,7 +15,7 @@ from tree import T
 def bf_order(t: T | None) -> Iterable[int]:
 
     # Create queue with root node
-    queue = deque([tree])
+    queue = deque([t])
     
     # if the queue is None we are done
     while queue:
@@ -28,7 +28,7 @@ def bf_order(t: T | None) -> Iterable[int]:
         # if current node has children to the right, push it into the queue
         if node.right:
             queue.append(node.right)
-  
+
 
 
 
